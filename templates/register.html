@@ -1,0 +1,39 @@
+<!-- templates/register.html -->
+{% extends "base.html" %} <!-- Inherit layout from base.html -->
+
+{% block title %}Register{% endblock %} <!-- Set the page title to 'Register' -->
+
+{% block content %}
+<section class="auth-form"> <!-- Container for the registration form -->
+    <h2>Create an Account</h2> <!-- Heading for the form -->
+
+    <form method="POST" action="{{ url_for('register') }}"> <!-- Form sends POST request to 'register' route -->
+
+        <div class="form-group"> <!-- Group for username field -->
+            <label for="username">Username</label> <!-- Label for username input -->
+            <input type="text" id="username" name="username" required> <!-- Username input field -->
+        </div>
+
+        <div class="form-group"> <!-- Group for email field -->
+            <label for="email">Email</label> <!-- Label for email input -->
+            <input type="email" id="email" name="email" required> <!-- Email input field -->
+        </div>
+
+        <div class="form-group"> <!-- Group for password field -->
+            <label for="password">Password</label> <!-- Label for password input -->
+            <input type="password" id="password" name="password" required> <!-- Password input field -->
+        </div>
+
+        <div class="form-group"> <!-- Group for confirm password field -->
+            <label for="confirm_password">Confirm Password</label> <!-- Label for confirm password input -->
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            <!-- Confirm password input field -->
+        </div>
+
+        <button type="submit" class="btn">Register</button> <!-- Submit button for the form -->
+    </form>
+
+    <p class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    <!-- Link to login page -->
+</section>
+{% endblock %}

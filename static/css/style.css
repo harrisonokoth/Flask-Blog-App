@@ -1,0 +1,299 @@
+/* CSS variables for easy theme management and consistency */
+:root {
+    --primary-color: #1a8917;         /* Main brand color (green) */
+    --secondary-color: #333;          /* Secondary text color */
+    --light-color: #f8f9fa;           /* Light background color */
+    --dark-color: #212529;            /* Dark background color */
+    --danger-color: #dc3545;          /* Error/alert color (red) */
+    --border-color: #ddd;             /* Border color */
+    --text-color: #333;               /* Main text color */
+    --text-light: #6c757d;            /* Lighter text color */
+}
+
+/* Reset default browser styles */
+* {
+    margin: 0;                        /* Remove default margins */
+    padding: 0;                       /* Remove default padding */
+    box-sizing: border-box;           /* Include padding/border in element width */
+}
+
+/* Base body styles */
+body {
+    font-family: 'Open Sans', sans-serif;  /* Use Open Sans font */
+    line-height: 1.6;                      /* Improve readability */
+    color: var(--text-color);              /* Set text color */
+    background-color: #fff;                /* White background */
+}
+
+/* Container for consistent content width */
+.container {
+    width: 100%;                          /* Full width */
+    max-width: 1200px;                    /* Maximum content width */
+    margin: 0 auto;                       /* Center container */
+    padding: 0 20px;                      /* Add padding on sides */
+}
+
+/* HEADER STYLES */
+.header {
+    background-color: #fff;               /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: sticky;                     /* Sticky header */
+    top: 0;                               /* Stick to top */
+    z-index: 100;                         /* Ensure header stays on top */
+    padding: 1rem 0;                      /* Vertical padding */
+}
+
+/* Logo styling */
+.logo {
+    font-size: 1.5rem;                    /* Larger font size */
+    font-weight: 700;                     /* Bold weight */
+    color: var(--primary-color);          /* Brand color */
+    text-decoration: none;                /* Remove underline */
+}
+
+/* Navigation styling */
+.nav {
+    display: flex;                        /* Horizontal layout */
+    gap: 1.5rem;                         /* Space between nav items */
+}
+
+.nav-link {
+    text-decoration: none;                /* Remove underline */
+    color: var(--secondary-color);        /* Dark gray color */
+    font-weight: 600;                     /* Semi-bold */
+}
+
+.nav-link:hover {
+    color: var(--primary-color);          /* Change to brand color on hover */
+}
+
+/* BUTTON STYLES */
+.btn {
+    display: inline-block;                /* Allow padding */
+    padding: 0.5rem 1rem;                /* Button padding */
+    background-color: var(--primary-color); /* Brand color */
+    color: white;                         /* White text */
+    border: none;                         /* No border */
+    border-radius: 4px;                   /* Rounded corners */
+    text-decoration: none;                /* Remove underline */
+    font-weight: 600;                     /* Semi-bold */
+    cursor: pointer;                      /* Pointer cursor */
+    transition: background-color 0.3s;    /* Smooth color transition */
+}
+
+.btn:hover {
+    background-color: #157813;            /* Darker green on hover */
+}
+
+/* Danger button variant */
+.btn-danger {
+    background-color: var(--danger-color); /* Red color */
+}
+
+.btn-danger:hover {
+    background-color: #c82333;            /* Darker red on hover */
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;                   /* Center content */
+    padding: 4rem 0;                      /* Vertical padding */
+    background-color: var(--light-color);  /* Light gray background */
+    border-radius: 8px;                   /* Rounded corners */
+    margin: 2rem 0;                       /* Vertical margin */
+}
+
+.hero h1 {
+    font-size: 2.5rem;                    /* Large heading */
+    margin-bottom: 1rem;                  /* Space below heading */
+}
+
+.hero p {
+    font-size: 1.2rem;                    /* Larger paragraph text */
+    margin-bottom: 2rem;                  /* Space below paragraph */
+    color: var(--text-light);             /* Light gray text */
+}
+
+/* POST GRID LAYOUT */
+.post-grid {
+    display: grid;                        /* CSS Grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 2rem;                            /* Space between cards */
+    margin: 2rem 0;                       /* Vertical margin */
+}
+
+/* POST CARD STYLES */
+.post-card {
+    border: 1px solid var(--border-color); /* Light border */
+    border-radius: 8px;                   /* Rounded corners */
+    overflow: hidden;                     /* Hide overflowing content */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effects */
+}
+
+.post-card:hover {
+    transform: translateY(-5px);          /* Lift card on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+.post-image {
+    width: 100%;                         /* Full width */
+    height: 200px;                       /* Fixed height */
+    object-fit: cover;                   /* Crop image to fit */
+}
+
+.post-content {
+    padding: 1.5rem;                     /* Inner spacing */
+}
+
+.post-content h3 {
+    margin-bottom: 0.5rem;               /* Space below title */
+}
+
+.post-content h3 a {
+    color: var(--secondary-color);        /* Dark text */
+    text-decoration: none;               /* Remove underline */
+}
+
+.post-content h3 a:hover {
+    color: var(--primary-color);         /* Brand color on hover */
+}
+
+.post-excerpt {
+    color: var(--text-light);            /* Light gray text */
+    margin-bottom: 1rem;                 /* Space below excerpt */
+}
+
+.post-meta {
+    display: flex;                       /* Horizontal layout */
+    justify-content: space-between;      /* Space between items */
+    font-size: 0.9rem;                  /* Smaller text */
+    color: var(--text-light);           /* Light gray text */
+}
+
+/* FULL POST VIEW STYLES */
+.full-post {
+    margin: 2rem 0;                      /* Vertical margin */
+}
+
+.post-header-image {
+    width: 100%;                        /* Full width */
+    max-height: 500px;                  /* Maximum height */
+    object-fit: cover;                  /* Crop image to fit */
+    border-radius: 8px;                 /* Rounded corners */
+    margin-bottom: 2rem;                /* Space below image */
+}
+
+.full-post h1 {
+    font-size: 2.5rem;                  /* Large heading */
+    margin-bottom: 1rem;                /* Space below heading */
+}
+
+.full-post .post-meta {
+    margin-bottom: 2rem;                /* Space below meta */
+}
+
+.post-content {
+    font-size: 1.1rem;                  /* Slightly larger text */
+    line-height: 1.8;                   /* Improved readability */
+}
+
+.post-actions {
+    margin-top: 2rem;                   /* Space above buttons */
+    display: flex;                      /* Horizontal layout */
+    gap: 1rem;                         /* Space between buttons */
+}
+
+/* FORM STYLES */
+.auth-form, .post-form {
+    max-width: 600px;                   /* Limit form width */
+    margin: 2rem auto;                  /* Center form */
+    padding: 2rem;                      /* Inner spacing */
+    background-color: #fff;             /* White background */
+    border-radius: 8px;                 /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.auth-form h2, .post-form h2 {
+    margin-bottom: 1.5rem;              /* Space below heading */
+    text-align: center;                 /* Center heading */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;              /* Space between fields */
+}
+
+.form-group label {
+    display: block;                     /* Make labels block elements */
+    margin-bottom: 0.5rem;              /* Space below label */
+    font-weight: 600;                   /* Semi-bold labels */
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;                       /* Full width */
+    padding: 0.75rem;                  /* Input padding */
+    border: 1px solid var(--border-color); /* Light border */
+    border-radius: 4px;                /* Rounded corners */
+    font-family: inherit;              /* Inherit font */
+    font-size: 1rem;                  /* Normal font size */
+}
+
+.form-group textarea {
+    min-height: 200px;                /* Minimum height */
+    resize: vertical;                 /* Allow vertical resize */
+}
+
+/* Auth form switch link */
+.auth-switch {
+    text-align: center;               /* Center text */
+    margin-top: 1.5rem;              /* Space above */
+    color: var(--text-light);        /* Light gray text */
+}
+
+.auth-switch a {
+    color: var(--primary-color);     /* Brand color */
+    text-decoration: none;          /* Remove underline */
+}
+
+/* FLASH MESSAGES */
+.flash-messages {
+    margin: 1rem 0;                 /* Vertical margin */
+}
+
+.flash-message {
+    padding: 1rem;                  /* Inner spacing */
+    margin-bottom: 1rem;            /* Space between messages */
+    border-radius: 4px;             /* Rounded corners */
+    background-color: #f8d7da;      /* Light red background */
+    color: #721c24;                /* Dark red text */
+    border: 1px solid #f5c6cb;     /* Red border */
+}
+
+/* FOOTER STYLES */
+.footer {
+    text-align: center;             /* Center content */
+    padding: 2rem 0;               /* Vertical padding */
+    margin-top: 4rem;              /* Space above footer */
+    border-top: 1px solid var(--border-color); /* Top border */
+    color: var(--text-light);      /* Light gray text */
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    /* Stack header elements on mobile */
+    .header .container {
+        flex-direction: column;     /* Vertical layout */
+        align-items: flex-start;    /* Align left */
+    }
+    
+    /* Add space between stacked nav items */
+    .nav {
+        margin-top: 1rem;           /* Space above nav */
+    }
+    
+    /* Reduce hero heading size */
+    .hero h1 {
+        font-size: 2rem;            /* Smaller heading */
+    }
+}

@@ -1,0 +1,61 @@
+<!-- templates/index.html -->
+<!-- This template extends the base.html template -->
+{% extends "base.html" %} <!-- Inherits all structure from base.html -->
+
+<!-- Overrides the title block from base.html -->
+{% block title %}Home{% endblock %} <!-- Sets the page title to "Home" -->
+
+<!-- Begins the content block that will be inserted into base.html -->
+{% block content %}
+<!-- Hero section - main banner at top of page -->
+<section class="hero">
+    <h1>Welcome to BlogPlatform</h1> <!-- Main heading -->
+    <p>A simple blogging platform for sharing your thoughts.</p> <!-- Subheading -->
+
+    <!-- Show 'Join Now' button only for logged out users -->
+    {% if 'username' not in session %} <!-- Checks if user is NOT logged in -->
+    <a href="{{ url_for('register') }}" class="btn">Join Now</a> <!-- Registration button -->
+    {% endif %}
+</section>
+
+<!-- Posts listing section -->
+<section class="posts">
+    <h2>Latest Posts</h2> <!-- Section heading -->
+
+    <!-- Check if there are any posts to display -->
+    {% if posts %} <!-- If posts exist -->
+    <div class="post-grid"> <!-- Container for post cards grid -->
+        <!-- Loop through each post in the posts list -->
+        {% for post in posts %}
+        <article class="post-card"> <!-- Individual post card -->
+            <!-- Display post image if one exists -->
+            {% if post.image %} <!-- Check if post has image -->
+            <img src="{{ url_for('static', filename='images/' + post.image) }}" alt="{{ post.title }}"
+                class="post-image"> <!-- Post image with alt text -->
+            {% endif %}
+
+            <div class="post-content"> <!-- Post text content -->
+                <!-- Post title linking to full post view -->
+                <h3>
+                    <a href="{{ url_for('view_post', post_id=posts.index(post)) }}">
+                        {{ post.title }} <!-- Post title text -->
+                    </a>
+                </h3>
+
+                <!-- Post excerpt (first 150 characters) -->
+                <p class="post-excerpt">{{ post.content[:150] }}...</p> <!-- Truncated content -->
+
+                <!-- Post metadata (author and date) -->
+                <div class="post-meta">
+                    <span class="post-author">By {{ post.author }}</span> <!-- Author name -->
+                    <span class="post-date">{{ post.date }}</span> <!-- Post date -->
+                </div>
+            </div>
+        </article>
+        {% endfor %} <!-- End of posts loop -->
+    </div>
+    {% else %} <!-- If no posts exist -->
+    <p>No posts yet. Be the first to create one!</p> <!-- Empty state message -->
+    {% endif %}
+</section>
+{% endblock %} <!-- End of content block -->

@@ -1,0 +1,34 @@
+<!-- templates/login.html -->
+{% extends "base.html" %}
+
+<!-- This block sets the title of the page to 'Login' -->
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<!-- Section for the login form -->
+<section class="auth-form">
+    <h2>Login to Your Account</h2>
+
+    <!-- Login form that sends data using POST method to the 'login' route -->
+    <form method="POST" action="{{ url_for('login') }}">
+
+        <!-- Username input field -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <!-- Password input field -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <!-- Submit button to log in -->
+        <button type="submit" class="btn">Login</button>
+    </form>
+
+    <!-- Link to registration page if user doesn't have an account -->
+    <p class="auth-switch">Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+</section>
+{% endblock %}

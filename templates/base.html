@@ -1,0 +1,72 @@
+<!-- This is the base template that all other templates will inherit from -->
+<!DOCTYPE html> <!-- Declares this as an HTML5 document -->
+<html lang="en"> <!-- Sets the language to English -->
+
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8"> <!-- Sets character encoding to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes site responsive on mobile devices -->
+
+    <!-- Dynamic title block - child templates can override this -->
+    <title>{% block title %}Blog Platform{% endblock %}</title>
+
+    <!-- CSS links -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Links to our custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts import -->
+</head>
+
+<body>
+    <!-- Header section with navigation -->
+    <header class="header">
+        <div class="container"> <!-- Container for consistent width -->
+            <a href="{{ url_for('index') }}" class="logo">BlogPlatform</a> <!-- Site logo linking to homepage -->
+
+            <!-- Navigation menu that changes based on login status -->
+            <nav class="nav">
+                {% if 'username' in session %} <!-- Check if user is logged in -->
+                <!-- Show these links for logged-in users -->
+                <a href="{{ url_for('create_post') }}" class="nav-link">New Post</a> <!-- Create new post -->
+                <a href="#" class="nav-link">Profile</a> <!-- User profile (placeholder #) -->
+                <a href="{{ url_for('logout') }}" class="nav-link">Logout</a> <!-- Logout link -->
+                {% else %}
+                <!-- Show these links for guests -->
+                <a href="{{ url_for('login') }}" class="nav-link">Login</a> <!-- Login link -->
+                <a href="{{ url_for('register') }}" class="nav-link">Register</a> <!-- Registration link -->
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="main">
+        <div class="container">
+            <!-- Flash message display system -->
+            {% with messages = get_flashed_messages() %} <!-- Get all flash messages -->
+            {% if messages %} <!-- If there are messages to display -->
+            <div class="flash-messages">
+                {% for message in messages %} <!-- Loop through each message -->
+                <div class="flash-message">{{ message }}</div> <!-- Display individual message -->
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <!-- Content block - child templates will insert their content here -->
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 BlogPlatform. All rights reserved.</p> <!-- Copyright notice -->
+        </div>
+    </footer>
+
+    <!-- JavaScript file link -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script> <!-- Links to our JavaScript file -->
+</body>
+
+</html>
